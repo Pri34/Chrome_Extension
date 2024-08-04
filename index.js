@@ -56,18 +56,155 @@
 //BACK TO THE APP
 
 
+// const inputBtn =  document.getElementById("input-btn")
+// const inputEl = document.getElementById("input-el")
+// const ulEl = document.getElementById("ul-el")
+// let myLeads = ["hello","me"] 
+
+// inputBtn.addEventListener("click",function(){
+//     // Push the value from the inputEl into the myLeads array 
+//     // instead of the hard-coded "www.awesomeleads.com" value
+//     // Google -> "get value from input field javascript"
+//     myLeads.push(inputEl.value)
+// })
+
+// for(let i=0 ; i<myLeads.length ; i++){
+//     ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+// }
+
+
+// //INNERHTML
+
+
+// // Use .innerHTML to render a Buy! button inside the div container
+// const containerEl=document.getElementById("container")
+// containerEl.innerHTML = "<button onclick='buy()'>" + "BUY" + "</button>"
+
+// // When clicked, render a paragraph under the button (in the container)
+// // that says "Thank you for buying!"
+
+// function buy() {
+//     containerEl.innerHTML += "<p>Thank you for buying!</p>"
+// }
+
+
+//BACK TO THE APP
+
+
+
+// const inputBtn =  document.getElementById("input-btn")
+// const inputEl = document.getElementById("input-el")
+// const ulEl = document.getElementById("ul-el")
+// let myLeads = []
+// let listItems = ""
+
+// inputBtn.addEventListener("click",function(){
+//     myLeads.push(inputEl.value)
+// })
+
+// // 1. Create a variable, listItems, to hold all the HTML for the list items
+// // Assign it to an empty string to begin with
+// // 2. Add the item to the listItems variable instead of the ulEl.innerHTML
+// // 3. Render the listItems inside the unordered list using ulEl.innerHTML
+
+// for(let i=0 ; i<myLeads.length ; i++){
+//     // ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+//     // create element
+//     // set text content
+//     // append to ul
+//     // Alternative Way
+
+//     // const li = document.createElement("li")
+//     // li.textContent = myLeads[i]
+//     // ulEl.append(li)
+
+//     listItems += "<li>" + myLeads[i] + "</li>"
+//     // console.log(listItems)
+// }
+
+// //DOM MANIPULATION IS BEST TO DO ONLY ONCE OUTSIDE FOR LOOP INSTEAD OF DOING IT THREE TIMES IN FOR LOOP
+// //DOM MANIPULATION COMES WITH A COST SO ITS BETTER TO DO IT ONE TIME THAN THREE TIMES
+
+// ulEl.innerHTML =  listItems
+
+
+
+// const inputBtn =  document.getElementById("input-btn")
+// const inputEl = document.getElementById("input-el")
+// const ulEl = document.getElementById("ul-el")
+// let myLeads = []
+
+
+// inputBtn.addEventListener("click",function(){
+//     myLeads.push(inputEl.value)
+//     renderLeads()
+//     inputEl.value = " "
+// })
+
+// function renderLeads() {
+//     let listItems = ""
+//     for(let i=0 ; i<myLeads.length ; i++){
+//         // listItems += "<li><a href='" + myLeads[i] + "' target='_blank'>" + myLeads[i] + "</a></li>"
+//         listItems += `
+//         <li>
+//             <a href='${myLeads[i]}' target='_blank'>
+//                 ${myLeads[i]}
+//             </a>
+//         </li>
+//         `
+//     }
+//     ulEl.innerHTML =  listItems
+// }
+
+
+
+// //TEMPLATE STRINGS
+
+
+// const recipient = "James"
+// const sender = "Prisha"
+
+// // Create a new variable, sender, and set its value to your name
+// // Use your sender variable instead of "Per"
+
+// // Refactor the email string to use template strings
+// // const email = "Hey " + recipient + "! How is it going? Cheers Per"
+
+// const email = `
+//     Hey ${recipient}! 
+//     How is it going? 
+//     Cheers ${sender}
+//     `
+// console.log(email)
+
+
+
+//BACK TO THE APP
+
+
+
 const inputBtn =  document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
-let myLeads = ["hello","me"] 
+let myLeads = []
+
 
 inputBtn.addEventListener("click",function(){
-    // Push the value from the inputEl into the myLeads array 
-    // instead of the hard-coded "www.awesomeleads.com" value
-    // Google -> "get value from input field javascript"
     myLeads.push(inputEl.value)
+    renderLeads()
+    inputEl.value = " "
 })
 
-for(let i=0 ; i<myLeads.length ; i++){
-    ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+function renderLeads() {
+    let listItems = ""
+    for(let i=0 ; i<myLeads.length ; i++){
+        listItems += `
+        <li>
+            <a href='${myLeads[i]}' target='_blank'>
+                ${myLeads[i]}
+            </a>
+        </li>
+        `
+    }
+    ulEl.innerHTML =  listItems
 }
