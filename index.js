@@ -186,13 +186,47 @@
 const inputBtn =  document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
-let myLeads = []
+myLeads=[]
 
+//Converting a string into array
+// let myLeads = `["www.eeekfn.com"]`
+// myLeads=JSON.parse(myLeads)
+// myLeads.push("cccdd")
+// console.log(myLeads)
+
+//Converting an array into string
+// let myLeads = ["www.eeekfn.com"]
+// myLeads=JSON.stringify(myLeads)
+// console.log(myLeads)
+
+// localStorage.setItem("hello","wwww.ejbrikv")
+// localStorage.getItem("hello")
+// localStorage.clear()
+
+//Both key and value must be strings in local storage
+
+// let myLeads = `["www.awesomelead.com"]`
+
+// 1. Turn the myLeads string into an array
+// 2. Push a new value to the array
+// 3. Turn the array into a string again
+// 4. Console.log the string using typeof to verify that it's a string
+
+// myLeads=JSON.parse(myLeads)
+// myLeads.push("fhfbcv0")
+// myLeads=JSON.stringify(myLeads)
+// console.log(myLeads)
+// console.log(typeof myLeads)
 
 inputBtn.addEventListener("click",function(){
     myLeads.push(inputEl.value)
-    renderLeads()
     inputEl.value = " "
+    // Save the myLeads array to localStorage 
+    // PS: remember JSON.stringify()
+    renderLeads()
+    
+    // To verify that it works:
+    console.log( localStorage.getItem("myLeads") )
 })
 
 function renderLeads() {
