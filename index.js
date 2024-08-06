@@ -183,50 +183,172 @@
 
 
 
+// const inputBtn =  document.getElementById("input-btn")
+// const inputEl = document.getElementById("input-el")
+// const ulEl = document.getElementById("ul-el")
+// myLeads=[]
+
+// //Converting a string into array
+// // let myLeads = `["www.eeekfn.com"]`
+// // myLeads=JSON.parse(myLeads)
+// // myLeads.push("cccdd")
+// // console.log(myLeads)
+
+// //Converting an array into string
+// // let myLeads = ["www.eeekfn.com"]
+// // myLeads=JSON.stringify(myLeads)
+// // console.log(myLeads)
+
+// // localStorage.setItem("hello","wwww.ejbrikv")
+// // localStorage.getItem("hello")
+// // localStorage.clear()
+
+// //Both key and value must be strings in local storage
+
+// // let myLeads = `["www.awesomelead.com"]`
+
+// // 1. Turn the myLeads string into an array
+// // 2. Push a new value to the array
+// // 3. Turn the array into a string again
+// // 4. Console.log the string using typeof to verify that it's a string
+
+// // myLeads=JSON.parse(myLeads)
+// // myLeads.push("fhfbcv0")
+// // myLeads=JSON.stringify(myLeads)
+// // console.log(myLeads)
+// // console.log(typeof myLeads)
+
+// inputBtn.addEventListener("click",function(){
+//     myLeads.push(inputEl.value)
+//     inputEl.value = " "
+//     // Save the myLeads array to localStorage 
+//     // PS: remember JSON.stringify()
+//     localStorage.setItem("myLeads",JSON.stringify(myLeads)) //we are adding all the values under my keys as key value
+//     renderLeads()
+    
+//     // To verify that it works:
+//     console.log( localStorage.getItem("myLeads") )
+// })
+
+// // Get the leads from the localStorage
+// // Store it in a variable, leadsFromLocalStorage
+// // Log out the variable
+
+// localStorage.getItem("myLeads") 
+// myLeads=JSON.parse(myLeads)
+// let leadsFromLocalStorage=myLeads
+// console.log(leadsFromLocalStorage)
+
+// // let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+// // console.log(leadsFromLocalStorage)
+
+
+// function renderLeads() {
+//     let listItems = ""
+//     for(let i=0 ; i<myLeads.length ; i++){
+//         listItems += `
+//         <li>
+//             <a href='${myLeads[i]}' target='_blank'>
+//                 ${myLeads[i]}
+//             </a>
+//         </li>
+//         `
+//     }
+//     ulEl.innerHTML =  listItems
+// }
+
+
+
+// //TRUTHY AND FALSY VALUES
+
+
+
+// const credits=0
+
+// if(credits >0 ){
+//     console.log("Lets Play")
+// } else {
+//     console.log("Sorry,You have no credits")
+// }
+
+// if(credits){    //this will also work in js and if we put 0 then js will say its
+//     //falsy value and go to else. if credits is 12 then for js its true and first if statement is printed
+//     console.log("Lets Play")
+// } else {
+//     console.log("Sorry,You have no credits")
+// }
+
+// if("yolo"){
+//     console.log("Lets Play")
+// } else {
+//     console.log("Sorry,You have no credits")
+// } //lets is logged out because yolo is truthy value here in js
+
+// if(["prisha","hello"]){
+//     console.log("Lets Play")
+// } else {
+//     console.log("Sorry,You have no credits")
+// } //also truthy value
+
+// if(''){
+//     console.log("Lets Play")
+// } else {
+//     console.log("Sorry,You have no credits")
+// } //empty string got tranlated to falsy value
+
+// // falsy values
+
+// // false
+// // 0
+// // ""
+// // null -> how you as a developer signalize emptiness
+// // undefined -> how JavaScript signalizes emptiness
+// // NaN
+
+// let currentViewers = null
+
+// currentViewers = ["jane", "nick"]
+
+// currentViewers = null
+
+// if (true) {
+//     // do something , e.g. notify the live streamers
+//     console.log("we have viewers")
+// }
+
+
+// //Undefined
+
+// let currentViewers1
+// console.log(currentViewers1) //Undefined
+
+// //Tell whether these are truthy or falsy values
+
+// console.log(  Boolean("")   ) // false
+// console.log(  Boolean("0")  ) // true
+// console.log(  Boolean(100)  ) // true
+// console.log(  Boolean(null) ) // false
+// console.log(  Boolean([0])  ) // true
+// console.log(  Boolean(-0)   ) // false
+
+
+
+//BACK TO OUR APP
+
+
+
 const inputBtn =  document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 myLeads=[]
 
-//Converting a string into array
-// let myLeads = `["www.eeekfn.com"]`
-// myLeads=JSON.parse(myLeads)
-// myLeads.push("cccdd")
-// console.log(myLeads)
-
-//Converting an array into string
-// let myLeads = ["www.eeekfn.com"]
-// myLeads=JSON.stringify(myLeads)
-// console.log(myLeads)
-
-// localStorage.setItem("hello","wwww.ejbrikv")
-// localStorage.getItem("hello")
-// localStorage.clear()
-
-//Both key and value must be strings in local storage
-
-// let myLeads = `["www.awesomelead.com"]`
-
-// 1. Turn the myLeads string into an array
-// 2. Push a new value to the array
-// 3. Turn the array into a string again
-// 4. Console.log the string using typeof to verify that it's a string
-
-// myLeads=JSON.parse(myLeads)
-// myLeads.push("fhfbcv0")
-// myLeads=JSON.stringify(myLeads)
-// console.log(myLeads)
-// console.log(typeof myLeads)
+let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 
 inputBtn.addEventListener("click",function(){
     myLeads.push(inputEl.value)
     inputEl.value = " "
-    // Save the myLeads array to localStorage 
-    // PS: remember JSON.stringify()
+    localStorage.setItem("myLeads",JSON.stringify(myLeads)) //we are adding all the values under my keys as key value
     renderLeads()
-    
-    // To verify that it works:
-    console.log( localStorage.getItem("myLeads") )
 })
 
 function renderLeads() {
