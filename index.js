@@ -340,17 +340,25 @@
 const inputBtn =  document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
-myLeads=[]
+const deleteBtn = document.getElementById("delete-btn")
+let myLeads=[]
 
-let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+//Now while getting data from Local storage then the values are either present in form of array or it is null
+//if null is present then do nothing else store them in myLeads and then display them
 
-inputBtn.addEventListener("click",function(){
-    myLeads.push(inputEl.value)
-    inputEl.value = " "
-    localStorage.setItem("myLeads",JSON.stringify(myLeads)) //we are adding all the values under my keys as key value
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+
+// 1. Check if leadsFromLocalStorage is truthy
+// 2. If so, set myLeads to its value and call renderLeads()
+
+if(leadsFromLocalStorage){
+    myLeads=leadsFromLocalStorage
     renderLeads()
-})
+} 
 
+//Refratoring the renderleads function since it has low degree of reusability
+//it only looks out at one array 
+//Make it such that it can render out any array we ask it to render out
 function renderLeads() {
     let listItems = ""
     for(let i=0 ; i<myLeads.length ; i++){
@@ -364,3 +372,17 @@ function renderLeads() {
     }
     ulEl.innerHTML =  listItems
 }
+
+deleteBtn.addEventListener("dblclick",function(){
+    localStorage.clear()
+    myLeads=[]
+    renderLeads()  //render leads because now it will render out empty list
+})
+
+inputBtn.addEventListener("click",function(){
+    myLeads.push(inputEl.value)
+    inputEl.value = " "
+    localStorage.setItem("myLeads",JSON.stringify(myLeads)) //we are adding all the values under my keys as key value
+    renderLeads()
+})
+
