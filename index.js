@@ -337,35 +337,222 @@
 
 
 
+// const inputBtn =  document.getElementById("input-btn")
+// const inputEl = document.getElementById("input-el")
+// const ulEl = document.getElementById("ul-el")
+// const deleteBtn = document.getElementById("delete-btn")
+// let myLeads=[]
+
+// //Now while getting data from Local storage then the values are either present in form of array or it is null
+// //if null is present then do nothing else store them in myLeads and then display them
+
+// const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+
+// // 1. Check if leadsFromLocalStorage is truthy
+// // 2. If so, set myLeads to its value and call renderLeads()
+
+// if(leadsFromLocalStorage){
+//     myLeads=leadsFromLocalStorage
+//     render(myLeads)
+// } 
+
+// //Refratoring the renderleads function since it has low degree of reusability
+// //it only looks out at one array 
+// //Make it such that it can render out any array we ask it to render out
+// function render(leads) {
+//     let listItems = ""
+//     for(let i=0 ; i<leads.length ; i++){
+//         listItems += `
+//         <li>
+//             <a href='${leads[i]}' target='_blank'>
+//                 ${leads[i]}
+//             </a>
+//         </li>
+//         `
+//     }
+//     ulEl.innerHTML =  listItems
+// }
+
+// deleteBtn.addEventListener("dblclick",function(){
+//     localStorage.clear()
+//     myLeads=[]
+//     render(myLeads)  //render leads because now it will render out empty list
+// })
+
+// inputBtn.addEventListener("click",function(){
+//     myLeads.push(inputEl.value)
+//     inputEl.value = " "
+//     localStorage.setItem("myLeads",JSON.stringify(myLeads)) //we are adding all the values under my keys as key value
+//     render(myLeads)
+// })
+
+
+
+//FIRST PARAMETER FUNCTION
+
+
+// const welcomeEl = document.getElementById("welcome-el")
+// function greetUser(name) { //passing parameter into the function  //name="prisha"
+//     welcomeEl.textContent = "Welcome back, " + name +  "👋" 
+// }
+
+// greetUser("Prisha") //passing value into the function when envoking it
+
+
+// const welcomeEl = document.getElementById("welcome-el")
+// // Give the function a parameter, greeting, that replaces "Welcome back"
+// function greetUser(greeting) {
+//     welcomeEl.textContent = greeting + " Per Harald Borgen 👋"    
+// }
+
+// greetUser("Hello")
+
+
+
+//MULTIPLE PARAMETERS
+
+// const welcomeEl = document.getElementById("welcome-el")
+// function greetUser(greeting,name,emoji) {
+//     welcomeEl.textContent = `
+//     ${greeting} ,${name} ${emoji}
+//     `  
+// }
+
+// greetUser("Hello","Prisha","👋")
+
+
+//PASSING NUMBERS AS PARAMETERS
+
+
+// Create a function, add(), that adds two numbers together and returns the sum
+
+// function add(a,b) {
+//     return(a+b)
+// }
+
+// console.log( add(3,4)    ) // should log 7
+// console.log( add(9, 102) ) // should log 111
+
+
+
+// //ARRAYS AS PARAMETERS
+
+
+// // Create a function, getFirst(arr), that returns the first item in the array
+// // Call it with an array as an argument to verify that it works
+
+// function getFirst(arr) {
+//     return arr[0]
+// }
+
+// console.log(getFirst([7,10,2,3]))
+
+
+
+//BACK TO THE APP
+
+
+
+// const inputBtn =  document.getElementById("input-btn")
+// const inputEl = document.getElementById("input-el")
+// const ulEl = document.getElementById("ul-el")
+// const deleteBtn = document.getElementById("delete-btn")
+// const tabBtn = document.getElementById("tab-btn")
+// let myLeads=[]
+
+// const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+
+// if(leadsFromLocalStorage){
+//     myLeads=leadsFromLocalStorage
+//     render(myLeads)
+// } 
+
+// // const tabs = [
+// //     {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+// // ]  //Array ke andar object hai....key value pair
+
+// tabBtn.addEventListener("click",function(){
+// //     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+// //     // since only one tab should be active and in the current window at once
+// //     // the return variable should only have one entry
+// //     let activeTab = tabs[0]
+// //     let activeTabId = activeTab.id // or do whatever you need
+// // })
+
+//     chrome.tabs.query({active:true,currentWindow:true},function(tabs){
+//         myLeads.push(tabs[0].url)
+//         localStorage.setItem("myleads",JSON.stringify(myLeads))
+//         render(myLeads)
+//     })
+
+//     })
+
+
+// function render(leads) {
+//     let listItems = ""
+//     for(let i=0 ; i<leads.length ; i++){
+//         listItems += `
+//         <li>
+//             <a href='${leads[i]}' target='_blank'>
+//                 ${leads[i]}
+//             </a>
+//         </li>
+//         `
+//     }
+//     ulEl.innerHTML =  listItems
+// }
+
+// deleteBtn.addEventListener("dblclick",function(){
+//     localStorage.clear()
+//     myLeads=[]
+//     render(myLeads)  
+// })
+
+// inputBtn.addEventListener("click",function(){
+//     myLeads.push(inputEl.value)
+//     inputEl.value = " "
+//     localStorage.setItem("myLeads",JSON.stringify(myLeads)) 
+//     render(myLeads)
+// })
+
+
+
+//FINAL CODE
+
+
+
+
 const inputBtn =  document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
+const tabBtn = document.getElementById("tab-btn")
 let myLeads=[]
-
-//Now while getting data from Local storage then the values are either present in form of array or it is null
-//if null is present then do nothing else store them in myLeads and then display them
 
 const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 
-// 1. Check if leadsFromLocalStorage is truthy
-// 2. If so, set myLeads to its value and call renderLeads()
-
 if(leadsFromLocalStorage){
     myLeads=leadsFromLocalStorage
-    renderLeads()
-} 
+    render(myLeads)
+}
 
-//Refratoring the renderleads function since it has low degree of reusability
-//it only looks out at one array 
-//Make it such that it can render out any array we ask it to render out
-function renderLeads() {
+tabBtn.addEventListener("click",function(){
+    chrome.tabs.query({active:true,currentWindow:true},function(tabs){
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myleads",JSON.stringify(myLeads))
+        render(myLeads)
+    })
+
+})
+
+
+function render(leads) {
     let listItems = ""
-    for(let i=0 ; i<myLeads.length ; i++){
+    for(let i=0 ; i<leads.length ; i++){
         listItems += `
         <li>
-            <a href='${myLeads[i]}' target='_blank'>
-                ${myLeads[i]}
+            <a href='${leads[i]}' target='_blank'>
+                ${leads[i]}
             </a>
         </li>
         `
@@ -376,13 +563,12 @@ function renderLeads() {
 deleteBtn.addEventListener("dblclick",function(){
     localStorage.clear()
     myLeads=[]
-    renderLeads()  //render leads because now it will render out empty list
+    render(myLeads)  
 })
 
 inputBtn.addEventListener("click",function(){
     myLeads.push(inputEl.value)
     inputEl.value = " "
-    localStorage.setItem("myLeads",JSON.stringify(myLeads)) //we are adding all the values under my keys as key value
-    renderLeads()
-})
-
+    localStorage.setItem("myLeads",JSON.stringify(myLeads)) 
+    render(myLeads)
+})   
